@@ -1,0 +1,49 @@
+﻿@page
+@model OdeToFood.Pages.ResturantsModel
+@{
+    @Model.Message
+}
+
+<form  action = "" method="get">
+    <div class="form-group"> 
+        <div class="input-group">
+            <input type="search" class="form-control" asp-for="SearchTerm"/>  <!--asp-for: Model binding: Binding input value with SearchTerm of model , sets name(imagine key value pair) as well as value ->
+            <span class=" input-group-btn">
+                <button class="btn btn-default">
+                    <i class= "btn-close-white"></i>
+                </button>
+            </span>
+        </div>
+    </div>
+</form>
+
+<table class="table">
+    <tr>
+        <td>ID</td>
+        <td>Name</td>
+        <td>Location</td>
+        <td>Cuisine</td>
+    </tr>
+@foreach (var item in Model.resturants)
+{
+    <tr>
+            <td>
+                @item.id
+            </td>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @item.Location
+            </td>
+            <td>
+                @item.CuisineType
+               
+            </td>   
+            <td>
+                <a asp-page="./ResturantDetail" asp-route-resturantId="@item.id" class="btn btn-default">Details</a>
+            </td>
+            
+    </tr>
+}
+</table>
